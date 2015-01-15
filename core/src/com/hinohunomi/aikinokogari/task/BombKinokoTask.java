@@ -28,7 +28,7 @@ final public class BombKinokoTask extends NoWaitTask {
     @Override
     public void execute() {
         Gdx.app.debug(LOG_TAG, "execute");
-        Gdx.app.debug(LOG_TAG, String.format("X:%d Y:%d", numX, numY));
+//        Gdx.app.debug(LOG_TAG, String.format("X:%d Y:%d", numX, numY));
         if (numX >= 0 && numY >= 0) {
             final App app = App.getInstance();
             final ModelStatics.KinokoTypes kinokoType = app.fields[numX][numY].type;
@@ -39,7 +39,7 @@ final public class BombKinokoTask extends NoWaitTask {
                 // 得点加算
                 app.score += bombedCount * bombedCount;
                 // 生え度加算
-                app.power += app.powerTable[bombedCount];
+                app.power += App.powerTable[bombedCount];
                 // 爆破を見せる（ウェイト）
                 app.task.push(new WaitTask(0.3f));
                 // 爆破済キノコ消去
@@ -56,8 +56,7 @@ final public class BombKinokoTask extends NoWaitTask {
     private int countBombedField() {
         final CountBombedField cbf = new CountBombedField(ModelStatics.KinokoTypes.BLACK);
         App.getInstance().fieldForEach(cbf);
-        final int result = cbf.getCount();
-        return result;
+        return cbf.getCount();
     }
 
     /**
@@ -65,9 +64,9 @@ final public class BombKinokoTask extends NoWaitTask {
      * 指定色のキノコを爆破する（黒に変更する）。
      * 爆破はまわり８近傍の同色のキノコにも及ぶ。
      * 爆破位置のまわり８近傍を再帰処理する。
-     * @param numX
-     * @param numY
-     * @param kinokoType
+     * @param numX X位置
+     * @param numY Y位置
+     * @param kinokoType 爆破するキノコ種別
      */
     private void bombKinoko(final int numX, final int numY, final ModelStatics.KinokoTypes kinokoType) {
         if ( (numX < 0) || (App.MAX_COLS <= numX)
@@ -98,7 +97,7 @@ final public class BombKinokoTask extends NoWaitTask {
  * 爆破したキノコのカウント.
  */
 final class CountBombedField implements IFieldCallback {
-    public static final String LOG_TAG = CountBombedField.class.getSimpleName();
+//    public static final String LOG_TAG = CountBombedField.class.getSimpleName();
 
     /**
      * 爆破したキノコのカウント数.
