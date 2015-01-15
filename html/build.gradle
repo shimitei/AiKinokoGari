@@ -7,8 +7,8 @@ gwt {
     minHeapSize="1G"
 
     src = files(file("src/")) // Needs to be in front of "modules" below.
-    modules 'com.hinohunomi.game.GdxDefinition'
-    devModules 'com.hinohunomi.game.GdxDefinitionSuperdev'
+    modules 'com.hinohunomi.aikinokogari.GdxDefinition'
+    devModules 'com.hinohunomi.aikinokogari.GdxDefinitionSuperdev'
     project.webAppDirName = 'webapp'
 
     compiler {
